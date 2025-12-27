@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(git:*)",
+      "Bash(cd:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(tree:*)",
+      "Bash(cargo:*)",
+      "Bash(rustc:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nPhase 1 基盤セットアップ\n\n- Tauri + Next.js プロジェクト初期化\n- Shadcn/ui セットアップ\n- Supabase マイグレーションファイル作成\n- ドキュメント構成整備 \\(docs/, .claude/, .task/\\)\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git reset:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nPhase 1 基盤セットアップ\n\n- Tauri + Next.js プロジェクト初期化\n- Shadcn/ui セットアップ\n- Supabase マイグレーションファイル作成\n- ドキュメント構成整備 \\(docs/, .claude/, .task/\\)\n- .gitignore 整備\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ],
+    "deny": []
+  }
+}
