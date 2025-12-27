@@ -192,3 +192,7 @@ export type DailyScheduleUpdate = UpdateTables<'daily_schedules'>;
 export type PomodoroLog = Tables<'pomodoro_logs'>;
 export type PomodoroLogInsert = InsertTables<'pomodoro_logs'>;
 export type PomodoroLogUpdate = UpdateTables<'pomodoro_logs'>;
+
+// Status and Priority type aliases for UI components
+export type TaskStatus = Task['status'];
+export type TaskPriority = Task['priority'];
