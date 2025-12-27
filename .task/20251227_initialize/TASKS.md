@@ -3,29 +3,29 @@
 ## Phase 1: 基盤セットアップと Linear 連携 (Collector)
 
 ### 1.1 プロジェクト初期化
-- [ ] Tauri + Next.js プロジェクトの作成
-- [ ] TypeScript 設定
-- [ ] ESLint / Prettier 設定
-- [ ] Shadcn/ui のセットアップ
+- [x] Tauri + Next.js プロジェクトの作成
+- [x] TypeScript 設定
+- [x] ESLint / Prettier 設定
+- [x] Shadcn/ui のセットアップ
 
 ### 1.2 Supabase セットアップ
-- [ ] Supabase プロジェクトの作成
-- [ ] 環境変数の設定 (.env.example 作成)
-- [ ] Supabase クライアントの初期化
+- [ ] Supabase プロジェクトの作成（ユーザー側で作成）
+- [x] 環境変数の設定 (.env.example 作成)
+- [x] Supabase クライアントの初期化
 
 ### 1.3 データベース設計
-- [ ] tasks テーブルの作成
-- [ ] daily_schedules テーブルの作成
-- [ ] pomodoro_logs テーブルの作成
-- [ ] RLS (Row Level Security) ポリシーの設定
+- [x] tasks テーブルの作成
+- [x] daily_schedules テーブルの作成
+- [x] pomodoro_logs テーブルの作成
+- [x] RLS (Row Level Security) ポリシーの設定
 
 ### 1.4 認証機能
-- [ ] Supabase Auth の設定
-- [ ] ログイン/ログアウト UI の実装
+- [x] Supabase Auth の設定
+- [x] ログイン/ログアウト UI の実装
 
 ### 1.5 Collector エージェント
-- [ ] Linear API 連携
-- [ ] Linear からタスクを Supabase に同期する機能
+- [x] Linear API 連携
+- [x] Linear からタスクを Supabase に同期する機能
 
 ---
 

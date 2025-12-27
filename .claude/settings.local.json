@@ -23,7 +23,18 @@
       "Bash(git commit -m \"$\\(cat <<''EOF''\nPhase 1 基盤セットアップ\n\n- Tauri + Next.js プロジェクト初期化\n- Shadcn/ui セットアップ\n- Supabase マイグレーションファイル作成\n- ドキュメント構成整備 \\(docs/, .claude/, .task/\\)\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git reset:*)",
       "Bash(git rm:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nPhase 1 基盤セットアップ\n\n- Tauri + Next.js プロジェクト初期化\n- Shadcn/ui セットアップ\n- Supabase マイグレーションファイル作成\n- ドキュメント構成整備 \\(docs/, .claude/, .task/\\)\n- .gitignore 整備\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nPhase 1 基盤セットアップ\n\n- Tauri + Next.js プロジェクト初期化\n- Shadcn/ui セットアップ\n- Supabase マイグレーションファイル作成\n- ドキュメント構成整備 \\(docs/, .claude/, .task/\\)\n- .gitignore 整備\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git worktree add:*)",
+      "Bash(git commit:*)",
+      "Bash(git worktree:*)",
+      "Bash(git merge feature/supabase-client -m \"$\\(cat <<''EOF''\nMerge feature/supabase-client: Supabase クライアントセットアップ\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\nEOF\n\\)\")",
+      "Bash(git merge:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(git branch:*)",
+      "Bash(./node_modules/.bin/tsc:*)",
+      "Bash(git restore:*)"
     ],
     "deny": []
   }
