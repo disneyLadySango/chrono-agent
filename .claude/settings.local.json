@@ -34,7 +34,8 @@
       "Bash(npx tsc:*)",
       "Bash(git branch:*)",
       "Bash(./node_modules/.bin/tsc:*)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(npx supabase:*)"
     ],
     "deny": []
   }

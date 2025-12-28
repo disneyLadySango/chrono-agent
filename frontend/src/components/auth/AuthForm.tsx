@@ -22,13 +22,14 @@ export function AuthForm({
         variables: {
           default: {
             colors: {
-              brand: "hsl(var(--primary))",
-              brandAccent: "hsl(var(--primary))",
-              inputText: "hsl(var(--foreground))",
-              inputBackground: "hsl(var(--background))",
-              inputBorder: "hsl(var(--border))",
-              inputBorderFocus: "hsl(var(--ring))",
-              inputBorderHover: "hsl(var(--border))",
+              brand: "#18181b",
+              brandAccent: "#27272a",
+              brandButtonText: "#ffffff",
+              inputText: "#18181b",
+              inputBackground: "#ffffff",
+              inputBorder: "#e4e4e7",
+              inputBorderFocus: "#18181b",
+              inputBorderHover: "#a1a1aa",
             },
             borderWidths: {
               buttonBorderWidth: "1px",

@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { supabase } from "@/lib/supabase";
-import type { Task, TaskStatus, TaskPriority } from "@/types/database";
+import type { Task, TaskStatus } from "@/types/database";
 import { Loader2 } from "lucide-react";
 
 interface CreateTaskDialogProps {
@@ -32,17 +32,18 @@ interface CreateTaskDialogProps {
 }
 
 const statusOptions: { value: TaskStatus; label: string }[] = [
-  { value: "pending", label: "Pending" },
-  { value: "in_progress", label: "In Progress" },
-  { value: "completed", label: "Completed" },
-  { value: "cancelled", label: "Cancelled" },
+  { value: "pending", label: "未着手" },
+  { value: "in_progress", label: "進行中" },
+  { value: "completed", label: "完了" },
+  { value: "cancelled", label: "キャンセル" },
 ];
 
-const priorityOptions: { value: TaskPriority; label: string }[] = [
-  { value: "low", label: "Low" },
-  { value: "medium", label: "Medium" },
-  { value: "high", label: "High" },
-  { value: "urgent", label: "Urgent" },
+// Priority: 0=none, 1=urgent, 2=high, 3=medium, 4=low
+const priorityOptions: { value: string; label: string }[] = [
+  { value: "4", label: "低" },
+  { value: "3", label: "中" },
+  { value: "2", label: "高" },
+  { value: "1", label: "緊急" },
 ];
 
 export function CreateTaskDialog({
@@ -54,7 +55,7 @@ export function CreateTaskDialog({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<TaskStatus>("pending");
-  const [priority, setPriority] = useState<TaskPriority>("medium");
+  const [priority, setPriority] = useState("3"); // Medium
   const [dueDate, setDueDate] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -63,7 +64,7 @@ export function CreateTaskDialog({
     setTitle("");
     setDescription("");
     setStatus("pending");
-    setPriority("medium");
+    setPriority("3");
     setDueDate("");
     setError(null);
   };
@@ -97,7 +98,7 @@ export function CreateTaskDialog({
           title: title.trim(),
           description: description.trim() || null,
           status,
-          priority,
+          priority: parseInt(priority, 10),
           due_date: dueDate || null,
         })
         .select()
@@ -111,11 +112,13 @@ export function CreateTaskDialog({
         onTaskCreated(data);
         resetForm();
       }
-    } catch (err) {
-      console.error("Error creating task:", err);
-      setError(
-        err instanceof Error ? err.message : "Failed to create task"
-      );
+    } catch (err: unknown) {
+      console.error("Error creating task:", JSON.stringify(err, null, 2));
+      const errorMessage =
+        err && typeof err === "object" && "message" in err
+          ? String(err.message)
+          : "Failed to create task";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -125,9 +128,9 @@ export function CreateTaskDialog({
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create New Task</DialogTitle>
+          <DialogTitle>新しいタスクを作成</DialogTitle>
           <DialogDescription>
-            Add a new task to your list. Fill in the details below.
+            タスクの詳細を入力してください。
           </DialogDescription>
         </DialogHeader>
 
@@ -139,23 +142,23 @@ export function CreateTaskDialog({
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="title">Title *</Label>
+            <Label htmlFor="title">タイトル *</Label>
             <Input
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter task title"
+              placeholder="タスクのタイトルを入力"
               disabled={loading}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">説明</Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter task description (optional)"
+              placeholder="タスクの説明を入力（任意）"
               rows={3}
               disabled={loading}
             />
@@ -163,7 +166,7 @@ export function CreateTaskDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="status">Status</Label>
+              <Label htmlFor="status">ステータス</Label>
               <Select
                 value={status}
                 onValueChange={(value) => setStatus(value as TaskStatus)}
@@ -183,10 +186,10 @@ export function CreateTaskDialog({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="priority">Priority</Label>
+              <Label htmlFor="priority">優先度</Label>
               <Select
                 value={priority}
-                onValueChange={(value) => setPriority(value as TaskPriority)}
+                onValueChange={(value) => setPriority(value)}
                 disabled={loading}
               >
                 <SelectTrigger id="priority">
@@ -204,7 +207,7 @@ export function CreateTaskDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="due_date">Due Date</Label>
+            <Label htmlFor="due_date">期限</Label>
             <Input
               id="due_date"
               type="date"
@@ -221,16 +224,16 @@ export function CreateTaskDialog({
               onClick={handleClose}
               disabled={loading}
             >
-              Cancel
+              キャンセル
             </Button>
             <Button type="submit" disabled={loading}>
               {loading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Creating...
+                  作成中...
                 </>
               ) : (
-                "Create Task"
+                "作成"
               )}
             </Button>
           </DialogFooter>

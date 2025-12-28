@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Task, TaskStatus, TaskPriority } from "@/types/database";
+import type { Task, TaskStatus } from "@/types/database";
 import { Calendar, Trash2 } from "lucide-react";
 
 interface TaskCardProps {
@@ -20,24 +20,27 @@ interface TaskCardProps {
 }
 
 const statusLabels: Record<TaskStatus, string> = {
-  pending: "Pending",
-  in_progress: "In Progress",
-  completed: "Completed",
-  cancelled: "Cancelled",
+  pending: "未着手",
+  in_progress: "進行中",
+  completed: "完了",
+  cancelled: "キャンセル",
 };
 
-const priorityLabels: Record<TaskPriority, string> = {
-  low: "Low",
-  medium: "Medium",
-  high: "High",
-  urgent: "Urgent",
+// Priority: 0=none, 1=urgent, 2=high, 3=medium, 4=low
+const priorityLabels: Record<number, string> = {
+  0: "なし",
+  1: "緊急",
+  2: "高",
+  3: "中",
+  4: "低",
 };
 
-const priorityColors: Record<TaskPriority, string> = {
-  low: "bg-slate-500",
-  medium: "bg-blue-500",
-  high: "bg-orange-500",
-  urgent: "bg-red-500",
+const priorityColors: Record<number, string> = {
+  0: "bg-slate-400",
+  1: "bg-red-500",
+  2: "bg-orange-500",
+  3: "bg-blue-500",
+  4: "bg-slate-500",
 };
 
 export function TaskCard({ task, onStatusChange, onDelete }: TaskCardProps) {
@@ -58,9 +61,9 @@ export function TaskCard({ task, onStatusChange, onDelete }: TaskCardProps) {
             {task.title}
           </CardTitle>
           <Badge
-            className={`${priorityColors[task.priority]} text-white text-xs`}
+            className={`${priorityColors[task.priority] || priorityColors[0]} text-white text-xs`}
           >
-            {priorityLabels[task.priority]}
+            {priorityLabels[task.priority] || priorityLabels[0]}
           </Badge>
         </div>
       </CardHeader>

@@ -103,15 +103,15 @@ export function TaskList() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Tasks</h1>
+        <h1 className="text-2xl font-bold">タスク</h1>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={fetchTasks}>
             <RefreshCw className="h-4 w-4" />
-            Refresh
+            更新
           </Button>
           <Button size="sm" onClick={() => setDialogOpen(true)}>
             <Plus className="h-4 w-4" />
-            New Task
+            新規作成
           </Button>
         </div>
       </div>
@@ -124,10 +124,10 @@ export function TaskList() {
 
       {tasks.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12">
-          <p className="text-muted-foreground mb-4">No tasks yet</p>
+          <p className="text-muted-foreground mb-4">タスクがありません</p>
           <Button size="sm" onClick={() => setDialogOpen(true)}>
             <Plus className="h-4 w-4" />
-            Create your first task
+            最初のタスクを作成
           </Button>
         </div>
       ) : (
